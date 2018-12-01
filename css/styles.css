@@ -1,0 +1,28 @@
+.simon {
+    display: flex;
+    height: 500px;
+    width: 500px;
+    flex-wrap: wrap;
+}
+
+.game-button {
+    height: 250px;
+    width: 50%;
+}
+
+.btn-1 {  
+    border-radius: 100% 0 0 0;
+    background-color: red; 
+}
+
+.btn-2 { 
+    border-radius: 0 100% 0 0;
+}
+
+.btn-3 { 
+    border-radius: 0 0 0 100%;
+}
+
+.btn-4 { 
+    border-radius: 0 0 100% 0;
+}
