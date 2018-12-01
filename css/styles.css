@@ -1,8 +1,19 @@
+h1 {
+    font-size: 3rem;
+}
+
+.header {
+    background-color: lightgrey;
+    display:flex;
+}
+
 .simon {
     display: flex;
     height: 500px;
     width: 500px;
     flex-wrap: wrap;
+    background-color: black;
+    margin: 0 auto;
 }
 
 .game-button {
@@ -17,12 +28,15 @@
 
 .btn-2 { 
     border-radius: 0 100% 0 0;
+    background-color: green; 
 }
 
 .btn-3 { 
     border-radius: 0 0 0 100%;
+    background-color: orange; 
 }
 
 .btn-4 { 
     border-radius: 0 0 100% 0;
+    background-color: blue; 
 }
