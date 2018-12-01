@@ -6,7 +6,7 @@
 // Global variable of Array sequence
 var gameSeq = [];
 var userSeq = [];
-var bCorrect = true;
+var bCorrect = false;
 
 const randomize = () => {
   return Math.floor(Math.random()*4)+1;
@@ -53,6 +53,7 @@ function displayPattern(gameSeq)
 				break;
 			default:
 				console.log("Error");
+				break;
 		}
 	}
 
@@ -60,33 +61,56 @@ function displayPattern(gameSeq)
 
 function comparePattern(userInput){
 	userSeq.push(userInput);
+	console.log("user added " + userInput);
 	for(var i = 0; i <= userSeq.length - 1; i++){
 		if (userSeq[i] != gameSeq[i]) {
 			bCorrect = false;
-			console.log("You Lost!");
+			userSeq =[];
 			return;
 		}
-		else if(i = gameSeq.length - 1){
+		else if(i == gameSeq.length - 1){
+			if (userSeq.length == 20){
+				bCorrect = true;
+				console.log("You won. Congrats");
+				return;
+			}
+			bCorrect = true;
+			userSeq = [];
+			console.log("You won. Next Level");
 			//User got it all right!
-			// clear userSeq
 			//Check if the length of the userSeq or gameSeq equals 20. When they do the player has won
-			
+
 		}
 	}
 }
 
 const game = () => {
-	  let gameInSession = true;
+	let gameInSession = true;
+	gameSeq.push(randomize());
 
-	  while (gameInSession) {
-	    gameSeq.push(randomize());
 
-	    gameInSession = gameSeq.length < 5 ;
+    console.log(gameSeq);
+    displayPattern(gameSeq);
+    const timeVar = setInterval(() => {
+    	var userPassed = checkMatch();
+    	if (userPassed) {
+    		console.log("correct");
+    		bCorrect = false;
+    		gameSeq.push(randomize());
+    		console.log(gameSeq);
+    	}
+    	else{
+    		console.log("You lost!");
+			clearInterval(timeVar);
+    		return;
+    	}
+    }, 3000 * gameSeq.length);
 
-	    console.log(gameSeq);
-	    displayPattern(gameSeq);
+}
 
-	  }
+function checkMatch(){
+	console.log("checked");
+	return bCorrect;
 }
 
 
