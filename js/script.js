@@ -7,28 +7,25 @@
 var gameSeq = [];
 var userSeq = [];
 var bCorrect = false;
+var timeVar = null;
 
 const randomize = () => {
   return Math.floor(Math.random()*4)+1;
 }
 // set up click functions for the btns on page
 $('#btn1').click(function(){
-	console.log("test btn1");
 	comparePattern(1);
 })
 
 $('#btn2').click(function(){
-	console.log("test btn2");
 	comparePattern(2);
 })
 
 $('#btn3').click(function(){
-	console.log("test btn3");
 	comparePattern(3);
 })
 
 $('#btn4').click(function(){
-	console.log("test btn4");
 	comparePattern(4);
 })
 
@@ -40,16 +37,20 @@ function displayPattern(gameSeq)
 		var currNum = gameSeq[i];
 		switch (currNum){
 			case 1:
-				console.log("btn 1");
+				$('#btn1').addClass("glow");
+				$('#btn1').removeClass("glow");
 				break;
 			case 2:
-				console.log("btn 2");
+				$('#btn2').addClass("glow");
+				$('#btn2').removeClass("glow");
 				break;
 			case 3:
-				console.log("btn 3");
+				$('#btn3').addClass("glow");
+				$('#btn3').removeClass("glow");
 				break;
 			case 4:
-				console.log("btn 4");
+				$('#btn4').addClass("glow");
+				$('#btn4').removeClass("glow");
 				break;
 			default:
 				console.log("Error");
@@ -60,6 +61,9 @@ function displayPattern(gameSeq)
 }
 
 function comparePattern(userInput){
+	if (timeVar == null || timeVar == undefined) {
+		return;
+	}
 	userSeq.push(userInput);
 	console.log("user added " + userInput);
 	for(var i = 0; i <= userSeq.length - 1; i++){
@@ -72,14 +76,15 @@ function comparePattern(userInput){
 			if (userSeq.length == 20){
 				bCorrect = true;
 				console.log("You won. Congrats");
+				$("#displayMessage").html("You won the game, Congrats!");
+				$("#displayMessage").fadeIn("slow");
 				return;
 			}
 			bCorrect = true;
 			userSeq = [];
+			$("#displayMessage").html("You won. Next Level");
+			$("#displayMessage").fadeIn("slow");
 			console.log("You won. Next Level");
-			//User got it all right!
-			//Check if the length of the userSeq or gameSeq equals 20. When they do the player has won
-
 		}
 	}
 }
@@ -87,25 +92,33 @@ function comparePattern(userInput){
 const game = () => {
 	let gameInSession = true;
 	gameSeq.push(randomize());
-
+	$(this).prop("disabled",true);
 
     console.log(gameSeq);
     displayPattern(gameSeq);
-    const timeVar = setInterval(() => {
+    timeVar = setInterval(() => {
     	var userPassed = checkMatch();
     	if (userPassed) {
-    		console.log("correct");
     		bCorrect = false;
     		gameSeq.push(randomize());
     		console.log(gameSeq);
     	}
     	else{
-    		console.log("You lost!");
+    		console.log("You lost! Play Again?");
+    		$("#displayMessage").html("You lost the game! Try Again?");
+			$("#displayMessage").fadeIn("slow");
 			clearInterval(timeVar);
     		return;
     	}
-    }, 3000 * gameSeq.length);
+    }, 3500 * gameSeq.length);
 
+}
+
+function clearGame(){
+	gameSeq = [];
+	userSeq = [];
+	clearInterval(timeVar);
+	console.clear();
 }
 
 function checkMatch(){
