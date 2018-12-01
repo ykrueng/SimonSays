@@ -1,10 +1,37 @@
+body {
+    background-color: black;
+}
+
 h1 {
     font-size: 3rem;
 }
 
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .header {
-    background-color: lightgrey;
+    background-color: black;
+    color: white;
     display:flex;
+    width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 45%;
+    padding: 30px;
 }
 
 .simon {
@@ -19,6 +46,8 @@ h1 {
 .game-button {
     height: 250px;
     width: 50%;
+    font-size: 1.7rem;
+    color: white;
 }
 
 .btn-1 {  
@@ -39,4 +68,8 @@ h1 {
 .btn-4 { 
     border-radius: 0 0 100% 0;
     background-color: blue; 
+}
+
+.start-buttons {
+    width: 100%;
 }
