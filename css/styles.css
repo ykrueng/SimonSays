@@ -6,6 +6,12 @@ h1 {
     font-size: 4rem;
 }
 
+#displayMessage {
+    display: hidden;
+    max-width: 100%;
+    padding: 20px;
+}
+
 .game {
     display: flex;
     flex-direction: column;
@@ -23,11 +29,15 @@ h1 {
     background-color: rgb(86, 133, 86);
     color: white;
     display:flex;
-    width: 900px;
+    max-width: 900px;
     margin: 0 auto;
     justify-content: center;
     margin: 20px auto 20px;
     border-radius: 10px;
+}
+
+.container-fluid {
+    max-width: 600px;
 }
 
 .btn {
@@ -38,7 +48,7 @@ h1 {
 .simon {
     display: flex;
     height: 500px;
-    width: 500px;
+    max-width: 500px;
     flex-wrap: wrap;
     background-color: black;
     margin: 0 auto;
@@ -55,10 +65,17 @@ h1 {
     border-radius: 100% 0 0 0;
     background-color: red; 
 }
+.btn-1:hover {
+    background-color: rgb(250, 74, 74); 
+}
 
 .btn-2 { 
     border-radius: 0 100% 0 0;
     background-color: green; 
+}
+
+.btn-2:hover {
+    background-color: rgb(17, 146, 17); 
 }
 
 .btn-3 { 
@@ -66,11 +83,25 @@ h1 {
     background-color: orange; 
 }
 
+.btn-3:hover {
+    background-color: rgb(255, 182, 45); 
+}
+
 .btn-4 { 
     border-radius: 0 0 100% 0;
     background-color: blue; 
 }
 
+.btn-4:hover {
+    background-color: rgb(65, 65, 255); 
+}
+
+.glow {
+    border: 7px solid white;
+    font-size: 40px;
+}
+
 .start-buttons {
     width: 100%;
 }
+
