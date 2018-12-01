@@ -77,13 +77,11 @@ function comparePattern(userInput){
 				bCorrect = true;
 				console.log("You won. Congrats");
 				$("#displayMessage").html("You won the game, Congrats!");
-				$("#displayMessage").fadeIn("slow");
 				return;
 			}
 			bCorrect = true;
 			userSeq = [];
 			$("#displayMessage").html("You won. Next Level");
-			$("#displayMessage").fadeIn("slow");
 			console.log("You won. Next Level");
 		}
 	}
@@ -106,7 +104,6 @@ const game = () => {
     	else{
     		console.log("You lost! Play Again?");
     		$("#displayMessage").html("You lost the game! Try Again?");
-			$("#displayMessage").fadeIn("slow");
 			clearInterval(timeVar);
     		return;
     	}
